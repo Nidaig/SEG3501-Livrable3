@@ -6,34 +6,75 @@
 package persistence;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
- * @author Nick
+ * @author ssome
  */
 @Entity
+@Table(name="UserProfile7223444")
 public class UserProfile implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private static long serialVersionUID = 1L;
 
-    public Long getId() {
-        return id;
+    /**
+     * @return the serialVersionUID
+     */
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    /**
+     * @param aSerialVersionUID the serialVersionUID to set
+     */
+    public static void setSerialVersionUID(long aSerialVersionUID) {
+        serialVersionUID = aSerialVersionUID;
+    }
+    @Id
+    private String userID;
+    private String email;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private boolean isSupervisor;
+    public UserProfile() {
+        
+    }
+    
+    public UserProfile(String userID, String email, String password, String firstName, String lastName, boolean isSupervisor) {
+        this.userID=userID;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        
+    }
+    
+   public String getUserID(){
+        return userID;
+    }
+    
+    public void setUserID(String id){
+        this.userID=id;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (userID != null ? userID.hashCode() : 0);
         return hash;
     }
 
@@ -44,7 +85,7 @@ public class UserProfile implements Serializable {
             return false;
         }
         UserProfile other = (UserProfile) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.userID == null && other.userID != null) || (this.userID != null && !this.userID.equals(other.userID))) {
             return false;
         }
         return true;
@@ -52,7 +93,65 @@ public class UserProfile implements Serializable {
 
     @Override
     public String toString() {
-        return "persistence.UserProfile[ id=" + id + " ]";
+        return "model.UserProfile[ userID=" + userID + " ]";
+    }
+
+    /**
+     * @return the password
+     */
+     public boolean getIsSupervisor(){
+        return isSupervisor;
     }
     
+    public void setIsSupervisor(boolean supp){
+        this.isSupervisor=supp;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * @return the firstName
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * @param firstName the firstName to set
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * @return the lastName
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * @param lastName the lastName to set
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    
+    public String getEmail(){
+        return email;
+    }
+    
+    public void setEmail(String email){
+        this.email=email;
+    }
 }
+
+    
