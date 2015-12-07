@@ -6,34 +6,72 @@
 package persistence;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
- * @author Nick
+ * @author ssome
  */
 @Entity
+@Table(name="Team7223444")
 public class Team implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private static long serialVersionUID = 1L;
 
-    public Long getId() {
-        return id;
+    /**
+     * @return the serialVersionUID
+     */
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    /**
+     * @param aSerialVersionUID the serialVersionUID to set
+     */
+    public static void setSerialVersionUID(long aSerialVersionUID) {
+        serialVersionUID = aSerialVersionUID;
+    }
+    @Id
+    private String teamID;
+    private String name;
+    private UserProfile[] teamMembers;
+    private UserProfile[] candidates;
+    public Team() {
+        
+    }
+    
+    public Team(String teamID, String name,UserProfile[] teamMembers,UserProfile[] candidates) {
+        this.teamID=teamID;
+        this.name = name;
+        this.teamMembers = teamMembers;
+        this.candidates = candidates;
+        
+    }
+    
+   public String getTeamID(){
+        return teamID;
+    }
+    
+    public void setTeamID(String id){
+        this.teamID=id;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (teamID != null ? teamID.hashCode() : 0);
         return hash;
     }
 
@@ -44,7 +82,7 @@ public class Team implements Serializable {
             return false;
         }
         Team other = (Team) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.teamID == null && other.teamID != null) || (this.teamID != null && !this.teamID.equals(other.teamID))) {
             return false;
         }
         return true;
@@ -52,7 +90,96 @@ public class Team implements Serializable {
 
     @Override
     public String toString() {
-        return "persistence.Team[ id=" + id + " ]";
+        return "model.Team[ teamID=" + teamID + " ]";
+    }
+
+    /**
+     * @return the password
+     */
+         
+    public String getName(){
+        return teamID;
     }
     
+    public void setName(String name){
+        this.name=name;
+    }
+    public  UserProfile[] getTeamMembers(){
+        return teamMembers;
+    }
+    
+    public void setTeamMembers(UserProfile[] members){
+        this.teamMembers=members;
+    }
+    
+    public void addTeamMember(UserProfile user){
+        if(user==null){
+            return;
+        }
+        int size = teamMembers.length;
+
+        for(int i=0;i<size;i++){
+            if(teamMembers[i]==user){
+                //user already a member of the team
+                return;
+            }
+        }
+        UserProfile[] temp=new UserProfile[size+1];
+        for(int i=0;i<size;i++){
+            temp[i]=teamMembers[i];
+        }
+        temp[size]=user;
+        teamMembers=temp;
+        return;
+    }
+    public UserProfile[] getCandidates(){
+        return candidates;
+    }
+    
+    public void setCandidates(UserProfile[] candidates){
+        this.candidates=candidates;
+    }
+    
+    public void addCandidate(UserProfile user){
+        int size = candidates.length;
+
+        for(int i=0;i<size;i++){
+            if(candidates[i]==user){
+                //user already a candadate of the team
+                return;
+            }
+        }
+        UserProfile[] temp=new UserProfile[size+1];
+        for(int i=0;i<size;i++){
+            temp[i]=candidates[i];
+        }
+        temp[size]=user;
+        candidates=temp;
+        return;
+    }
+    public void removeCandidate(UserProfile user){
+            int size = candidates.length;
+            boolean flag=true;
+            UserProfile[] temp=new UserProfile[size-1];
+
+            for(int i=0;i<size;i++){
+                if(candidates[i]==user){
+                    flag=false;
+                }
+                else{
+                    temp[i]=candidates[i];
+
+                }
+        }
+            if(flag){
+                return;
+            }
+            else{
+                candidates=temp;
+                return;
+            }
+            
+
+        
+    }
 }

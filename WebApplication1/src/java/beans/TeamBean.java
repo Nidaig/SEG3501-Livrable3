@@ -49,6 +49,8 @@ public class TeamBean implements Serializable {
      * Creates a new instance of UserProfileBean
      */
     public TeamBean() {
+        teamMembers=null;
+        candidates=null;
     }
     
     public String getTeamID(){
@@ -74,6 +76,9 @@ public class TeamBean implements Serializable {
     }
     
     public void addTeamMember(UserProfile user){
+        if(user==null){
+            return;
+        }
         int size = teamMembers.length;
 
         for(int i=0;i<size;i++){
@@ -115,13 +120,34 @@ public class TeamBean implements Serializable {
         candidates=temp;
         return;
     }
-    public UserProfile removeCandidate(UserProfile user){
-        
+    public void removeCandidate(UserProfile user){
+            int size = candidates.length;
+            boolean flag=true;
+            UserProfile[] temp=new UserProfile[size-1];
+
+            for(int i=0;i<size;i++){
+                if(candidates[i]==user){
+                    flag=false;
+                }
+                else{
+                    temp[i]=candidates[i];
+
+                }
+        }
+            if(flag){
+                return;
+            }
+            else{
+                candidates=temp;
+                return;
+            }
+            
+
         
     }
     
     
-    public void updateUserBean(Team team){
+    public void updateTeamBean(Team team){
         this.setTeamID(team.getTeamID());
         this.setName(team.getName());
         this.setTeamMembers(team.getTeamMembers());
@@ -142,7 +168,7 @@ public class TeamBean implements Serializable {
                 " WHERE u.teamID = :teamID");
             query.setParameter("teamID",teamID);
             
-            updateUserBean((Team) query.getSingleResult());
+            updateTeamBean((Team) query.getSingleResult());
         
             return null;
     }
