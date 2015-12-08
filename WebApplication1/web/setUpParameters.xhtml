@@ -5,12 +5,26 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Greenboard - Instructor: Set parameters</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid>
+                <h:outputLabel value="Minimum number of teams: " />
+                <h:inputText id="min" value="#{teamBean.SettingMin}" />  <!--NOTE 1 : probably need to be implemented in the controler, not in the teamBean -->
+                <h:outputLabel value="Maximum number of teams: " />
+                <h:inputText id="max" value="#{teamBean.SettingMax}" /> <!-- IDEM note 1 -->
+                <h:outputLabel value="Deadline (yyyy-mm-dd): " />        <!-- on aura besoin d'utiliser DateValidator.java du lab 3 -->
+                <h:inputText id="deadlineDate" value="#{teamBean.deadline}" required="true" requiredMessage="Please enter a deadline">  <!-- IDEM note 1 -->
+                    <f:validator validatorId="dateValidator" />
+                </h:inputText>
+                <h:commandButton value="Apply" />
+                <h:commandButton value="Cancel" />
+            </h:panelGrid>
+        </h:form>
+    </h:body>
 </html>
