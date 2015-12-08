@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Nick/Documents/Ecole/Ans%203/Exigences/Livrable3/SEG3501-Livrable3/WebApplication1/src/java/persistence/Team.java</file>
             <file>file:/C:/Users/Nick/Documents/Ecole/Ans%203/Exigences/Livrable3/SEG3501-Livrable3/WebApplication1/src/java/beans/UserProfileBean.java</file>
             <file>file:/C:/Users/Nick/Documents/Ecole/Ans%203/Exigences/Livrable3/SEG3501-Livrable3/WebApplication1/src/java/persistence/UserProfile.java</file>
             <file>file:/C:/Users/Nick/Documents/Ecole/Ans%203/Exigences/Livrable3/SEG3501-Livrable3/WebApplication1/src/java/beans/TeamBean.java</file>
+=======
+            <file>file:/C:/Users/jdub5/Documents/GitHub/SEG3501-Livrable3/WebApplication1/src/java/beans/UserProfileBean.java</file>
+>>>>>>> origin/master
         </group>
     </open-files>
 </project-private>

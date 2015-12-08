@@ -6,7 +6,11 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h:form>
+            User ID: <h:inputText id="userID" value="#{userProfileBean.userID}"></h:inputText>
+            Password: <h:inputText id="password" value="#{userProfileBean.password}"></h:inputText> 
+        </h:form>
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
     </h:body>
 </html>
 
