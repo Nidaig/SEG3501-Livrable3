@@ -57,6 +57,15 @@ public class Controleur implements Serializable {
         }
     }
     
+    public void chooseTeam(Team t){
+        team.updateTeamBean(t);
+    }
+    
+    public void chooseUser(UserProfile u){
+        user.updateUserBean(u);
+    }
+    
+    
      public void lookupTeam() {
        List<Team> results = new ArrayList();
        if (!"".equals(team.getTeamID())) {
@@ -84,6 +93,8 @@ public class Controleur implements Serializable {
         }
         return result;
     }
+    
+    
 
     
     private List<Team> getTeamById(EntityManager em,TeamBean teamData) {
