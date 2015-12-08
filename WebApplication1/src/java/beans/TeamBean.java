@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Level;
@@ -41,6 +42,7 @@ public class TeamBean implements Serializable {
     private String name;
     private UserProfile[] teamMembers;
     private UserProfile[] candidates;
+    private List<Team> lookupResults;
     @PersistenceContext(unitName = "TMSPU7223444")
     private EntityManager em;
     @Resource
@@ -144,6 +146,22 @@ public class TeamBean implements Serializable {
             
 
         
+    }
+    
+       public void setLookupResults(List<Team> results) {
+        this.lookupResults = results;
+    }
+    
+    public List<Team> getLookupResults() {
+        return lookupResults;
+    }
+    // show results if any
+    public boolean getShowResults() {
+        return (lookupResults != null) && !lookupResults.isEmpty();
+    }
+    // show message if no result
+    public boolean getShowMessage() {
+        return (lookupResults != null) && lookupResults.isEmpty();
     }
     
     
