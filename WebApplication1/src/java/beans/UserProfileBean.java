@@ -46,7 +46,7 @@ public class UserProfileBean implements Serializable {
     private List<UserProfile> lookupResults;
     private String addstatus;
 
-    @PersistenceContext(unitName = "TMSP7223444")
+    @PersistenceContext(unitName = "UserProfile7223444")
     private EntityManager em;
     @Resource
     private javax.transaction.UserTransaction utx;

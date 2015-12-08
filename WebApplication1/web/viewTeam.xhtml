@@ -30,9 +30,11 @@ and open the template in the editor.
         
         <h:form>
             <h:outputLabel value="Enter a team number: " />
-            <h:inputText value="#{Controleur.lookupTeam.Number}" />
-            <h:commandButton value="View Team" />
-            <h:commandButton value="Cancel" />
+            <h:inputText value='teamid' />
+            <h:commandButton id="checkTeam" actionListener="#{controleur.selectTeam(teamid)}"
+                                         value="Confirm"
+                                         action='teamInfo.xhtml'/>
+          <button id='back' value="Back " outcome='studentAction' >Go Back </button>
         </h:form>
     </h:body>
 </html>

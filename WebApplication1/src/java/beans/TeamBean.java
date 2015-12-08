@@ -45,7 +45,7 @@ public class TeamBean implements Serializable {
     private List<Team> lookupResults;
     private String addstatus;
 
-    @PersistenceContext(unitName = "TMSPU7223444")
+    @PersistenceContext(unitName = "Team7223444")
     private EntityManager em;
     @Resource
     private javax.transaction.UserTransaction utx;

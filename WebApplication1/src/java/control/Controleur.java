@@ -48,6 +48,10 @@ public class Controleur implements Serializable {
     public Controleur() {
     }
     
+    public void selectTeam(String tID){
+        
+    }
+    
     public void setMin(int x){
         memberMin=x;
     }
