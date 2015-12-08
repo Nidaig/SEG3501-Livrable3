@@ -20,7 +20,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
+import beans.TeamBean;
 /**
  *
  * @author ssome
@@ -181,5 +181,11 @@ public class Team implements Serializable {
             
 
         
+    }
+    public boolean matches(TeamBean teamData) {
+        if (!"".equals(teamData.getTeamID()) && !this.getTeamID().trim().equals(teamData.getTeamID().trim())) {
+            return false;
+        } 
+        return true;
     }
 }

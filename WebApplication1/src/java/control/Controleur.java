@@ -43,55 +43,72 @@ public class Controleur implements Serializable {
     }
      public void lookupUser() {
        List<UserProfile> results = new ArrayList();
-       if (!"".equals(user.getId())) {
+       if (!"".equals(user.getUserID())) {
             // lookup by id
             results = getUserById(em,user);
-       } else if (!"".equals(user.getName())) {
-            // lookup by name
-            results = getUsersByName(em,user);
-       } else if (!"".equals(user.getBirthdate())) {
-            // lookup by birthdate
-            results = getUsersByBirthDate(em,user);
        }
        user.setLookupResults(results);
     }
-    public void add() {
-        if (DBHelper.addUser(em,utx,userData)) {
-            userData.setAddstatus("The User Was Successfuly Added");
+    public void addUser() {
+        if (DBHelper.addUser(em,utx,user)) {
+            user.setAddstatus("The User Was Successfuly Added");
         } else {
-            userData.setAddstatus("Addition of the User Failed");
+            user.setAddstatus("Addition of the User Failed");
+        }
+    }
+    
+     public void lookupTeam() {
+       List<Team> results = new ArrayList();
+       if (!"".equals(team.getTeamID())) {
+            // lookup by id
+            results = getTeamById(em,team);
+       }
+       team.setLookupResults(results);
+    }
+    public void addTeam() {
+        if (DBHelper.addTeam(em,utx,team)) {
+            team.setAddstatus("The team Was Successfuly Added");
+        } else {
+            team.setAddstatus("Addition of the team Failed");
         }
     }
     
         /**
      * Find a user by id and check if any that the other fields are valid
      */
-    private List<User> getUserById(EntityManager em,UserData userData) {
-        ArrayList<User> result = new ArrayList<>();
-        User user = DBHelper.findUser(em,userData.getId());
+    private List<UserProfile> getUserById(EntityManager em,UserProfileBean userData) {
+        ArrayList<UserProfile> result = new ArrayList<>();
+        UserProfile user = DBHelper.findUser(em,userData.getUserID());
         if (user != null && user.matches(userData)) {
             result.add(user);  
         }
         return result;
     }
 
-    private List<User> getUsersByName(EntityManager em,UserData userData) {
-       List<User> allresults = DBHelper.findUsersByName(em,userData.getName());
+    
+    private List<Team> getTeamById(EntityManager em,TeamBean teamData) {
+        ArrayList<Team> result = new ArrayList<>();
+        Team team = DBHelper.findTeam(em,teamData.getTeamID());
+        if (team != null && team.matches(teamData)) {
+            result.add(team);  
+        }
+        return result;
+    }
+   /* private List<UserProfile> getUsersByName(EntityManager em,UserProfileBean userData) {
+       List<UserProfile> allresults = DBHelper.findUsersByName(em,userData.getName());
        if (allresults == null) return null;
        return checkResults(allresults,userData);          
     }
 
-    private List getUsersByBirthDate(EntityManager em,UserData userData) {
-       List<User> allresults = DBHelper.findUsersByBirthDate(em,userData.getBirthdate());
-       if (allresults == null) return null;
-       return checkResults(allresults,userData);       
-    }
     
-    private List<User> checkResults(List<User> allresults,UserData userData) {
-        ArrayList<User> results = new ArrayList<>();
-        for (User user: allresults) {
+    
+    private List<UserProfile> checkUserResults(List<UserProfile> allresults,UserProfileBean userData) {
+        ArrayList<UserProfile> results = new ArrayList<>();
+        for (UserProfile user: allresults) {
             if (user.matches(userData)) results.add(user);
         }
         return results;
-    }
+    }*/
+    
+    
 }

@@ -43,6 +43,8 @@ public class TeamBean implements Serializable {
     private UserProfile[] teamMembers;
     private UserProfile[] candidates;
     private List<Team> lookupResults;
+    private String addstatus;
+
     @PersistenceContext(unitName = "TMSPU7223444")
     private EntityManager em;
     @Resource
@@ -51,8 +53,8 @@ public class TeamBean implements Serializable {
      * Creates a new instance of UserProfileBean
      */
     public TeamBean() {
-        teamMembers=null;
-        candidates=null;
+        teamMembers=new UserProfile[0];
+        candidates=new UserProfile[0];
     }
     
     public String getTeamID(){
@@ -147,7 +149,13 @@ public class TeamBean implements Serializable {
 
         
     }
-    
+     public String getAddstatus() {
+        return addstatus;
+    }
+
+    public void setAddstatus(String addstatus) {
+        this.addstatus = addstatus;
+    }
        public void setLookupResults(List<Team> results) {
         this.lookupResults = results;
     }

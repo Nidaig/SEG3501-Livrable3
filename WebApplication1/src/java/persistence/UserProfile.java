@@ -20,6 +20,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import beans.UserProfileBean;
 
 /**
  *
@@ -151,6 +152,20 @@ public class UserProfile implements Serializable {
     
     public void setEmail(String email){
         this.email=email;
+    }
+    
+    
+   
+    /**
+     * 
+     * @param userData
+     * @return true if this User matches the userData bean
+     */
+    public boolean matches(UserProfileBean userData) {
+        if (!"".equals(userData.getUserID()) && !this.getUserID().trim().equals(userData.getUserID().trim())) {
+            return false;
+        } 
+        return true;
     }
 }
 

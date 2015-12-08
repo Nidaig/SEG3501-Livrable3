@@ -44,6 +44,7 @@ public class UserProfileBean implements Serializable {
     private String lastName;
     private boolean isSupervisor;
     private List<UserProfile> lookupResults;
+    private String addstatus;
 
     @PersistenceContext(unitName = "TMSPU7223444")
     private EntityManager em;
@@ -119,6 +120,14 @@ public class UserProfileBean implements Serializable {
     /**
      * @return the phone
      */
+    
+     public String getAddstatus() {
+        return addstatus;
+    }
+
+    public void setAddstatus(String addstatus) {
+        this.addstatus = addstatus;
+    }
     
     public void setLookupResults(List<UserProfile> results) {
         this.lookupResults = results;
