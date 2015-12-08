@@ -27,10 +27,15 @@ import persistence.UserProfile;
  */
 @Named(value = "controleur")
 @RequestScoped
+
 public class Controleur implements Serializable {
     @Inject
     private UserProfileBean user;
     private TeamBean team;
+    private static int teamNumbers=0;
+    private static int memberMax;
+    private static int memberMin;
+
     @PersistenceContext
     EntityManager em;
     @Resource
@@ -41,6 +46,23 @@ public class Controleur implements Serializable {
      */
     public Controleur() {
     }
+    
+    public void setMin(int x){
+        memberMin=x;
+    }
+    public void setMax(int x){
+        memberMax=x;
+    }
+    
+    public void acceptMember(UserProfile user){
+        if(team.getSize()<memberMax){
+            team.acceptCandidate(user);
+        }
+        else{
+            return;
+        }
+    }
+    
      public void lookupUser() {
        List<UserProfile> results = new ArrayList();
        if (!"".equals(user.getUserID())) {
@@ -75,6 +97,10 @@ public class Controleur implements Serializable {
        team.setLookupResults(results);
     }
     public void addTeam() {
+        if(team.getTeamID()==null){
+            team.setTeamID("1"+teamNumbers);
+            teamNumbers++;
+        }
         if (DBHelper.addTeam(em,utx,team)) {
             team.setAddstatus("The team Was Successfuly Added");
         } else {

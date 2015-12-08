@@ -74,6 +74,9 @@ public class TeamBean implements Serializable {
     public  UserProfile[] getTeamMembers(){
         return teamMembers;
     }
+    public int getSize(){
+        return teamMembers.length;
+    }
     
     public void setTeamMembers(UserProfile[] members){
         this.teamMembers=members;

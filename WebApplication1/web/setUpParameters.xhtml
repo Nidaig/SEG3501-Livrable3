@@ -13,9 +13,9 @@ and open the template in the editor.
         <h:form>
             <h:panelGrid>
                 <h:outputLabel value="Minimum number of teams: " />
-                <h:inputText id="min" value="#{teamBean.SettingMin}" />  <!--NOTE 1 : probably need to be implemented in the controler, not in the teamBean -->
+                <h:inputText id="min" value="#{controleur.MemberMin}" />  <!--NOTE 1 : probably need to be implemented in the controler, not in the teamBean -->
                 <h:outputLabel value="Maximum number of teams: " />
-                <h:inputText id="max" value="#{teamBean.SettingMax}" /> <!-- IDEM note 1 -->
+                <h:inputText id="max" value="#{controleur.MemberMax}" /> <!-- IDEM note 1 -->
                 <h:outputLabel value="Deadline (yyyy-mm-dd): " />        <!-- on aura besoin d'utiliser DateValidator.java du lab 3 -->
                 <h:inputText id="deadlineDate" value="#{teamBean.deadline}" required="true" requiredMessage="Please enter a deadline">  <!-- IDEM note 1 -->
                     <f:validator validatorId="dateValidator" />
