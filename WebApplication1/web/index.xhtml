@@ -1,22 +1,31 @@
 @@ -3,14 +3,18 @@
+
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Facelet Title</title>
         <title>Greenboard - Log In</title>
     </h:head>
     <h:body>
-        <h:form>
+        
             User ID: <h:inputText id="userID" value="#{userProfileBean.userID}"></h:inputText>
             Password: <h:inputText id="password" value="#{userProfileBean.password}"></h:inputText> 
-            <h:panelGrid>
+            
                 <h:outputLabel value="User ID: " />
                 <h:inputText id="userID" value="#{userProfileBean.userID}" />
                 <h:outputLabel value="Password: " />
                 <h:inputSecret id="password" value="#{userProfileBean.password}" />
-                <h:commandButton value="Login" />
-            </h:panelGrid>
-        </h:form>
+                
+               
+                <button id='loginstudent' value="Log In Student" outcome='studentAction' >log in As student </button>
+                <button id='loginsupervisor' value="Log In Supervisor" outcome='supervisorAction' >log in As supervisor </button>
+
+
+                <p:commandButton id="createUser" 
+                                         value="Create User"
+                                         onclick="PF('bui').show()" oncomplete="PF('bui').hide()" outcome='CreateUser'/>            
+        
         <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
     </h:body>
 </html>

@@ -28,7 +28,7 @@ and open the template in the editor.
     
         <p:commandButton id="createTeam" actionListener="#{controleur.addTeam}"
                                          value="Confirm"
-                                         onclick="PF('bui').show()" oncomplete="PF('bui').hide()"/>
+                                         onclick="PF('bui').show()" oncomplete="PF('bui').hide()" outcome='index'/>
         <h:form>
             <h:panelGrid>
                 <h:outputLabel value="Team Name: " />

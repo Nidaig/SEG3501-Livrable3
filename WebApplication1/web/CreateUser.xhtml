@@ -12,12 +12,7 @@ and open the template in the editor.
     </head>
     <body>
 <h:form>
-           <!-- User ID: <h:inputText id="userID" value="#{userProfileBean.userID}"></h:inputText>
-            Password: <h:inputText id="password" value="#{userProfileBean.password}"></h:inputText> 
-            First Name: <h:inputText id="firstName" value="#{userProfileBean.firstName}"></h:inputText> 
-            Last Name: <h:inputText id="lastName" value="#{userProfileBean.lastName}"></h:inputText> 
-            Email address: <h:inputText id="email" value="#{userProfileBean.email}"></h:inputText> 
-           -->
+          
             <h:panelGrid columns="3">
                            <p:outputLabel value="UserId:*"/>
                             <p:inputText id="ModifyPersonalUserId"
@@ -82,6 +77,6 @@ and open the template in the editor.
 </form>
         <p:commandButton id="createUser" actionListener="#{controleur.addUser}"
                                          value="Confirm"
-                                         onclick="PF('bui').show()" oncomplete="PF('bui').hide()"/>
+                                         onclick="PF('bui').show()" oncomplete="PF('bui').hide()" outcome='index'/>
     </body>
 </html>
