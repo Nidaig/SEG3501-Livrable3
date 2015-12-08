@@ -79,6 +79,14 @@ public class TeamBean implements Serializable {
         this.teamMembers=members;
     }
     
+    public String getTeamMembersID(){
+        String s="";
+        for (int i=0;i<teamMembers.length;i++){
+            s=s+", "+teamMembers[i].getUserID();
+        }
+        
+        return s;
+    }
     public void addTeamMember(UserProfile user){
         if(user==null){
             return;

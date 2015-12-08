@@ -27,13 +27,13 @@
                         
         <h:commandButton id="accept" actionListener="#{teamBean.acceptCandidate(userProfileBean.getUser)}"
                                          value="Candidate Accepted"
-                                            outcome='teamInfo'
+                                            action='teamInfo.xhtml'
 
                                          />
         
         <h:commandButton id="reject" actionListener="#{teamBean.removeCandidate(userProfileBean.getUser)}"
                                          value="Candidate removed"
-                                            outcome='teamInfo'
+                                            action='teamInfo.xhtml'
 
                                          />
                   <button id='back' value="Back" outcome='teamInfo' >go Back </button>
