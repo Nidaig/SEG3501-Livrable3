@@ -5,14 +5,40 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">    <head>
         <title>Greenboard - Team Info</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
         
         
-        <div>TODO write content</div>
-    </body>
+<h:panelGrid  columns="4">
+                            <h:outputText style="font-weight:bold" value="TeamID " />
+                            <h:outputText value="#{teamBean.teamID}" />
+                            <h:outputText style="font-weight:bold" value="Name: " />
+                            <h:outputText value="#{teamBean.name}"/>
+                            <h:outputText style="font-weight:bold" value="Team Members: " />
+                            <h:outputText value="#{teamBean.getTeamMembersID}"/>
+                            
+                        </h:panelGrid>
+                        
+        <h:commandButton id="join" actionListener="#{teamBean.addCandidate(userProfileBean.getUser)}"
+                                         value="User is Candidate"
+                                            outcome='studentAction'
+
+                                         />
+        
+        <h:commandButton id="reject" actionListener="#{teamBean.removeCandidate(userProfileBean.getUser)}"
+                                         value="Candidate removed"
+                                            outcome='viewTeam'
+
+                                         />
+                  <h:button id='seeCandidate' value="SeeCandidate" outcome='seeCandidate' >look at the candidates </h:button>
+                  <h:button id='back' value="Back" outcome='viewTeam' >go Back </h:button>
+
+        
+        
+                    </p:panel>    </body>
 </html>

@@ -160,6 +160,16 @@ public class UserProfileBean implements Serializable {
      * @param actionEvent
      * @return 
      */
+    
+    public UserProfile getUser(ActionEvent actionEvent){
+        Query query = em.createQuery(
+                "SELECT u FROM UserProfile u" +
+                " WHERE u.userID = :userID");
+            query.setParameter("userID",userID);
+            
+            return((UserProfile) query.getSingleResult());
+        
+    }
     public String searchUser(ActionEvent actionEvent){
         
        Query query = em.createQuery(

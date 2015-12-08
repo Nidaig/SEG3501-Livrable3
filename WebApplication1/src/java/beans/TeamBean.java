@@ -124,6 +124,14 @@ public class TeamBean implements Serializable {
         candidates=temp;
         return;
     }
+    
+         public void acceptCandidate(UserProfile user){
+             addCandidate(user);
+             removeCandidate(user);
+         }
+
+         
+         
     public void removeCandidate(UserProfile user){
             int size = candidates.length;
             boolean flag=true;
@@ -187,7 +195,7 @@ public class TeamBean implements Serializable {
      * @param actionEvent
      * @return 
      */
-    public String searchUser(ActionEvent actionEvent){
+    public String searchTeam(ActionEvent actionEvent){
         
        Query query = em.createQuery(
                 "SELECT u FROM Team u" +
@@ -197,6 +205,16 @@ public class TeamBean implements Serializable {
             updateTeamBean((Team) query.getSingleResult());
         
             return null;
+    }
+    public Team getTeam(ActionEvent actionEvent){
+        
+       Query query = em.createQuery(
+                "SELECT u FROM Team u" +
+                " WHERE u.teamID = :teamID");
+            query.setParameter("teamID",teamID);
+            
+            return ((Team) query.getSingleResult());
+        
     }
     
     

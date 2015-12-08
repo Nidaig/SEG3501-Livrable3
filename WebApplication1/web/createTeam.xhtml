@@ -14,30 +14,26 @@ and open the template in the editor.
            
             <h:panelGrid columns="3">
                            
-                            <p:outputLabel value="TeamName:*"/>
-                            <p:inputText id="teamName"
+                            <h:outputLabel value="TeamName:*"/>
+                            <h:inputText id="teamName"
                                          value="#{TeamBean.name}"
                                          label="TeamId" required="true"
                                          requiredMessage="A TeamName is required">
-                                <p:ajax event="keyup" update="TeamNameMsg"/>
-                            </p:inputText>
-                            <p:message  id="TeamNameMsg" for="teamName"/>
+                            </h:inputText>
+                            <h:message  id="TeamNameMsg" for="teamName"/>
                             
                         </h:panelGrid>
+            <h:commandButton id="createTeam" actionListener="#{controleur.addTeam}"
+                                         value="Confirm"
+                                         outcome='studentAction'/>
+        
+               
+                          <button id='back' value="Back " outcome='studentAction' >back </button>
+
+            
         </h:form>  
     
     
-        <p:commandButton id="createTeam" actionListener="#{controleur.addTeam}"
-                                         value="Confirm"
-                                         onclick="PF('bui').show()" oncomplete="PF('bui').hide()" outcome='index'/>
-        <h:form>
-            <h:panelGrid>
-                <h:outputLabel value="Team Name: " />
-                <h:inputText id="TeamName" value="#{teamBean.name}" />
-                <!-- we wont ask for a team number, it needs to be auto assigned -->
-                <h:commandButton value="Create Team" />
-                <h:commandButton value="Cancel" />
-            </h:panelGrid>
-        </h:form>
+        
     </h:body>
 </html>

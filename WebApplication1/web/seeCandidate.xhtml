@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <head>
         <title>Greenboard - See Candidate</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -13,6 +13,33 @@ and open the template in the editor.
     </head>
     <body>
         
-        <div>TODO write content</div>
-    </body>
+                        <h:panelGrid  columns="4">
+                            <h:outputText style="font-weight:bold" value="UserId " />
+                            <h:outputText value="#{userProfileBean.userID}" />
+                            <h:outputText style="font-weight:bold" value="FirstName: " />
+                            <h:outputText value="#{userProfileBean.firstName}"/>
+                            <h:outputText style="font-weight:bold" value="LastName: " />
+                            <h:outputText value="#{userProfileBean.lastName}"/>
+                            <h:outputText style="font-weight:bold" value="Email " />
+                            <h:outputText value="#{userProfileBean.email}"/>
+                            
+                        </h:panelGrid>
+                        
+        <h:commandButton id="accept" actionListener="#{teamBean.acceptCandidate(userProfileBean.getUser)}"
+                                         value="Candidate Accepted"
+                                            outcome='teamInfo'
+
+                                         />
+        
+        <h:commandButton id="reject" actionListener="#{teamBean.removeCandidate(userProfileBean.getUser)}"
+                                         value="Candidate removed"
+                                            outcome='teamInfo'
+
+                                         />
+                  <button id='back' value="Back" outcome='teamInfo' >go Back </button>
+
+        
+        
+                    </p:panel>
+                    </body>
 </html>
