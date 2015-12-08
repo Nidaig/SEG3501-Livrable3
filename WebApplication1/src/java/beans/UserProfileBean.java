@@ -60,6 +60,26 @@ public class UserProfileBean implements Serializable {
         return isSupervisor;
     }
     
+    public void studentLogIn(ActionEvent actionEvent){
+     
+        confirmUser(actionEvent);
+        if(isSupervisor){
+                       String msg = "You are not a student";
+
+        }
+        
+    }
+    public void supervisorLogIn(ActionEvent actionEvent){
+     
+        confirmUser(actionEvent);
+        if(!isSupervisor){
+                       String msg = "You are not a supervisor";
+
+        }
+        
+    }
+
+    
     public void setIsSupervisor(boolean supp){
         this.isSupervisor=supp;
     }
@@ -160,6 +180,26 @@ public class UserProfileBean implements Serializable {
      * @param actionEvent
      * @return 
      */
+    public void confirmUser(ActionEvent actionEvent){
+        Query query = em.createQuery(
+                "SELECT u FROM UserProfile u" +
+                " WHERE u.userID = :userID");
+            query.setParameter("userID",userID);
+            
+            UserProfile u1=(UserProfile) query.getSingleResult();
+            
+            Query query2 = em.createQuery(
+                "SELECT u FROM UserProfile u" +
+                " WHERE u.password = :password");
+            query.setParameter("password",password);
+                        UserProfile u2=(UserProfile) query.getSingleResult();
+
+                        if(u1==u2){
+                            updateUserBean(u2);
+                        }
+                       
+        
+    }
     
     public UserProfile getUser(ActionEvent actionEvent){
         Query query = em.createQuery(

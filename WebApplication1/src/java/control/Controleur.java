@@ -18,6 +18,7 @@ import javax.persistence.PersistenceContext;
 import persistence.DBHelper;
 import beans.TeamBean;
 import beans.UserProfileBean;
+import javax.faces.event.ActionEvent;
 import persistence.Team;
 import persistence.UserProfile;
 //fait pas nicolas
@@ -96,7 +97,7 @@ public class Controleur implements Serializable {
        }
        team.setLookupResults(results);
     }
-    public void addTeam() {
+    public void addTeam(ActionEvent actionEvent) {
         if(team.getTeamID()==null){
             team.setTeamID("1"+teamNumbers);
             teamNumbers++;
@@ -106,6 +107,7 @@ public class Controleur implements Serializable {
         } else {
             team.setAddstatus("Addition of the team Failed");
         }
+        team.addTeamMember(user.getUser(actionEvent));
     }
     
         /**

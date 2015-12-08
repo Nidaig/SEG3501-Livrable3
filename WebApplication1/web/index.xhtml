@@ -17,10 +17,16 @@
                 <h:outputLabel value="Password: " />
                 <h:inputSecret id="password" value="#{userProfileBean.password}" />
                 
+                
+               <h:commandButton id="LoginStud" 
+                                actionListener="#{userProfileBean.studentLogIn}"
+                                         value="StudentLogin"
+                                          action='studentAction.xhtml'/>
+               <h:commandButton id="LoginSup" 
+                                actionListener="#{userProfileBean.supervisorLogIn}"
+                                         value="SupervisorLogin"
+                                          action='supervisorAction.xhtml'/>
                
-                <button id='loginstudent' value="Log In Student" outcome='studentAction' >log in As student </button>
-                <button id='loginsupervisor' value="Log In Supervisor" outcome='supervisorAction' >log in As supervisor </button>
-
 
                 <h:commandButton id="createUser" 
                                          value="Create User"
