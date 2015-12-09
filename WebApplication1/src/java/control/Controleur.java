@@ -48,8 +48,9 @@ public class Controleur implements Serializable {
     public Controleur() {
     }
     
-    public void selectTeam(String tID){
-        
+    public void selectTeam(String tID, ActionEvent actionEvent){
+        team.setTeamID(tID);
+        team.updateTeamBean(team.getTeam(actionEvent));
     }
     
     public void setMin(int x){

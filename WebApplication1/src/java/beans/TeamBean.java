@@ -113,6 +113,12 @@ public class TeamBean implements Serializable {
     public UserProfile[] getCandidates(){
         return candidates;
     }
+    public UserProfile  getCandidate(){
+        if(candidates.length>0){
+            return candidates[0];
+        }
+        return null;
+    }
     
     public void setCandidates(UserProfile[] candidates){
         this.candidates=candidates;
@@ -191,6 +197,15 @@ public class TeamBean implements Serializable {
         return (lookupResults != null) && lookupResults.isEmpty();
     }
     
+    public Team getTeam(ActionEvent actionEvent){
+        Query query = em.createQuery(
+                "SELECT u FROM UserProfile u" +
+                " WHERE u.teamID = :teamID");
+            query.setParameter("teamID",teamID);
+            
+            return((Team) query.getSingleResult());
+        
+    }
     
     public void updateTeamBean(Team team){
         this.setTeamID(team.getTeamID());
@@ -217,16 +232,7 @@ public class TeamBean implements Serializable {
         
             return null;
     }
-    public Team getTeam(ActionEvent actionEvent){
-        
-       Query query = em.createQuery(
-                "SELECT u FROM Team u" +
-                " WHERE u.teamID = :teamID");
-            query.setParameter("teamID",teamID);
-            
-            return ((Team) query.getSingleResult());
-        
-    }
+    
     
     
     
